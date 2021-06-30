@@ -1,0 +1,12 @@
+We manually delete with crontab. 
+This is a very dirty way, but it works and stabilizes the CPU consumption of Jenkins. 
+Please take your own responsibility for enabling this command.
+
+crontab -e
+
+1 1 1 1-12 * cd /var/lib/jenkins/workspace/ && find . -type d -name "*_ws-cleanup_*" -exec rm -rf {} +
+
+
+Crontab explanation:
+
+“At 01:01 on day-of-month 1 in every month from January through December.”
